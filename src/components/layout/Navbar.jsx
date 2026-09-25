@@ -1,96 +1,92 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Mail } from 'lucide-react';
+import { useState } from 'react';
+import { Menu, X, Mail, Home, User, FileText, Layers, Briefcase } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = ({ settings }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
+    { name: 'Home', href: '#hero', icon: <Home size={20} /> },
+    { name: 'About', href: '#about', icon: <User size={20} /> },
+    { name: 'Skills', href: '#skills', icon: <Layers size={20} /> },
+    { name: 'Projects', href: '#projects', icon: <Briefcase size={20} /> },
+    { name: 'Experience', href: '#experience', icon: <FileText size={20} /> },
   ];
 
   return (
-    <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-          {settings?.full_name?.split(' ')[0] || 'Dev'}.
-        </a>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-8 items-center">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
-          <a
-            href={settings.cv_link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-full bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg"
-          >
-            Resume
-          </a>
-        </nav>
-
-        {/* Mobile Menu Toggle */}
+    <>
+      {/* Mobile Toggle Button */}
+      <div className="xl:hidden fixed top-4 right-4 z-50">
         <button
-          className="md:hidden text-slate-600"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="bg-indigo-600 text-white p-2 rounded-full shadow-lg"
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Nav */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-white shadow-lg py-4 px-4 md:hidden flex flex-col gap-4 border-t border-slate-100"
-          >
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-slate-600 py-2 border-b border-slate-50"
-              >
-                {link.name}
-              </a>
-            ))}
-            <div className="flex gap-4 pt-4">
-              <a href={settings?.github_url || '#'} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-indigo-600"><FaGithub size={20}/></a>
-              <a href={settings?.linkedin_url || '#'} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-indigo-600"><FaLinkedin size={20}/></a>
-              <a href={`mailto:${settings?.contact_email || 'saeedmuhammadwaqar@gmail.com'}`} className="text-slate-400 hover:text-indigo-600"><Mail size={20}/></a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+      {/* Sidebar overlay for mobile */}
+      {mobileMenuOpen && (
+        <div 
+          className="xl:hidden fixed inset-0 bg-black/50 z-40" 
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <header
+        className={`fixed top-0 left-0 bottom-0 w-[300px] bg-[#040b14] text-white z-50 transition-transform duration-300 overflow-y-auto ${
+          mobileMenuOpen ? 'translate-x-0' : '-translate-x-full xl:translate-x-0'
+        }`}
+      >
+        <div className="flex flex-col items-center p-8">
+          <div className="w-[120px] h-[120px] rounded-full overflow-hidden border-8 border-[#2c2f3f] mb-4">
+            <img 
+              src={settings?.profile_image || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"} 
+              alt={settings?.full_name || "Profile"} 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          
+          <h1 className="text-2xl font-bold mb-4 text-center">
+            <a href="#hero" className="text-white hover:text-indigo-400 transition-colors">
+              {settings?.full_name || 'Alex Smith'}
+            </a>
+          </h1>
+
+          <div className="flex gap-2 mb-8">
+            <a href={settings?.github_url || '#'} target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-[#212431] flex items-center justify-center text-slate-300 hover:bg-indigo-500 hover:text-white transition-colors">
+              <FaGithub size={16}/>
+            </a>
+            <a href={settings?.linkedin_url || '#'} target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-[#212431] flex items-center justify-center text-slate-300 hover:bg-indigo-500 hover:text-white transition-colors">
+              <FaLinkedin size={16}/>
+            </a>
+            <a href={`mailto:${settings?.contact_email || 'saeedmuhammadwaqar@gmail.com'}`} className="w-9 h-9 rounded-full bg-[#212431] flex items-center justify-center text-slate-300 hover:bg-indigo-500 hover:text-white transition-colors">
+              <Mail size={16}/>
+            </a>
+          </div>
+
+          <nav className="w-full">
+            <ul className="flex flex-col gap-2">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 rounded-lg text-[#a8a9b4] hover:text-white hover:bg-[#14151a] transition-all group"
+                  >
+                    <span className="text-[#a8a9b4] group-hover:text-indigo-400 transition-colors">
+                      {link.icon}
+                    </span>
+                    <span className="font-medium">{link.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </header>
+    </>
   );
 };
 
