@@ -37,21 +37,19 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800">
+    <div className="min-h-screen bg-[#f4f9fc] text-[#0f1b61] font-sans">
       <Navbar settings={data.settings || data.Settings || {}} />
-      <div className="xl:ml-[300px] transition-all duration-300">
-        <main>
-          <Hero settings={data.settings || data.Settings || {}} />
-          <About settings={data.settings || data.Settings || {}} />
-          <Skills skills={[...getArray(data.skills), ...getArray(data.Skills)]} />
-          <Projects projects={[...getArray(data.projects), ...getArray(data.Projects)]} />
-          <Experience 
-            experience={[...getArray(data.experience), ...getArray(data.Experience)]} 
-            education={[...getArray(data.education), ...getArray(data.Education)]} 
-          />
-        </main>
-        <Footer settings={data.settings || data.Settings || {}} />
-      </div>
+      <main>
+        <Hero settings={data.settings || data.Settings || {}} />
+        <About settings={data.settings || data.Settings || {}} />
+        <Skills skills={[...getArray(data.skills), ...getArray(data.Skills)]} />
+        <Projects projects={[...getArray(data.projects), ...getArray(data.Projects)]} />
+        <Experience 
+          experience={[...getArray(data.experience), ...getArray(data.Experience)]} 
+          education={[...getArray(data.education), ...getArray(data.Education)]} 
+        />
+      </main>
+      <Footer settings={data.settings || data.Settings || {}} />
     </div>
   );
 }
