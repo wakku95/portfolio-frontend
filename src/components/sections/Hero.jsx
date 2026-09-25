@@ -50,7 +50,7 @@ const Hero = ({ settings }) => {
           </h1>
           
           <p className="text-xl md:text-2xl text-[#0f1b61] font-serif leading-relaxed max-w-lg">
-            I'm an <b className="font-bold">{settings?.profession || 'independent creative developer'}</b> based in Pakistan.
+            I'm {/^[aeiou]/i.test(settings?.profession || 'Web Developer') ? 'an' : 'a'} <b className="font-bold">{settings?.profession || 'Web Developer'}</b>.
           </p>
 
           {/* Simple scroll indicator line */}
