@@ -101,7 +101,7 @@ const Navbar = ({ settings }) => {
 
             <div className="absolute bottom-12 flex gap-6">
               <a href={settings?.github_url || '#'} target="_blank" rel="noreferrer" className="text-[#aadcec] hover:text-white transition-colors"><FaGithub size={28}/></a>
-              <a href={settings?.linkedin_url || '#'} target="_blank" rel="noreferrer" className="text-[#aadcec] hover:text-white transition-colors"><FaLinkedin size={28}/></a>
+              <a href={settings?.linkedin_url || 'https://www.linkedin.com/in/muhammad-waqar-saeed-5019052ab?utm_source=share_via&utm_content=profile&utm_medium=member_android'} target="_blank" rel="noreferrer" className="text-[#aadcec] hover:text-white transition-colors"><FaLinkedin size={28}/></a>
             </div>
           </motion.div>
         )}

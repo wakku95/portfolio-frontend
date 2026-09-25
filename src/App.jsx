@@ -45,8 +45,8 @@ function App() {
         <Skills skills={[...getArray(data.skills), ...getArray(data.Skills)]} />
         <Projects projects={[...getArray(data.projects), ...getArray(data.Projects)]} />
         <Experience 
-          experience={[...getArray(data.experience), ...getArray(data.Experience)]} 
-          education={[...getArray(data.education), ...getArray(data.Education)]} 
+          experience={[...getArray(data.experience), ...getArray(data.Experience), ...getArray(data.experiences), ...getArray(data.Experiences)]} 
+          education={[...getArray(data.education), ...getArray(data.Education), ...getArray(data.educations), ...getArray(data.Educations)]} 
         />
       </main>
       <Footer settings={data.settings || data.Settings || {}} />
