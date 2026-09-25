@@ -42,7 +42,7 @@ const Navbar = ({ settings }) => {
         <div className="flex flex-col items-center p-8">
           <div className="w-[120px] h-[120px] rounded-full overflow-hidden border-8 border-[#2c2f3f] mb-4">
             <img 
-              src={settings?.profile_image || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"} 
+              src={settings?.profile_image || "/hero-bench.jpg"} 
               alt={settings?.full_name || "Profile"} 
               className="w-full h-full object-cover"
             />

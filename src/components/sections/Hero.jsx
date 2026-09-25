@@ -24,7 +24,7 @@ const Hero = ({ settings }) => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src={settings?.profile_image || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"} 
+          src={settings?.profile_image || "/hero-bench.jpg"} 
           alt="Hero Background" 
           className="w-full h-full object-cover grayscale"
         />
