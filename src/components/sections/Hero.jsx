@@ -88,7 +88,7 @@ const Hero = ({ settings }) => {
             {/* Main image wrapped in a circle to mimic avatar */}
             <div className="absolute inset-0 rounded-full overflow-hidden border-8 border-white shadow-2xl bg-white">
               <img 
-                src={settings?.profile_image || "/hero-bench.jpg"} 
+                src="/anime-avatar.jpg" 
                 alt={settings?.full_name || "Profile"} 
                 className="w-full h-full object-cover"
               />
