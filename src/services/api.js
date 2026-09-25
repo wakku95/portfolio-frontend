@@ -1,9 +1,9 @@
 import axios from 'axios';
 import mockData from '../data/mock.json';
 
-const API_URL = import.meta.env.PROD 
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD 
   ? 'https://raabtanow.com/api/portfolio/data' 
-  : 'http://127.0.0.1:8000/api/portfolio/data';
+  : 'http://127.0.0.1:8000/api/portfolio/data');
 
 // Determine if we should use mock data based on a env variable or fallback
 const USE_MOCK = false; // Set this to true during development to use local JSON
