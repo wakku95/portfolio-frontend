@@ -83,9 +83,9 @@ const Navbar = ({ settings }) => {
               </a>
             ))}
             <div className="flex gap-4 pt-4">
-              <a href={settings.github_url} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-indigo-600"><FaGithub size={20}/></a>
-              <a href={settings.linkedin_url} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-indigo-600"><FaLinkedin size={20}/></a>
-              <a href={`mailto:${settings.contact_email}`} className="text-slate-400 hover:text-indigo-600"><Mail size={20}/></a>
+              <a href={settings?.github_url || '#'} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-indigo-600"><FaGithub size={20}/></a>
+              <a href={settings?.linkedin_url || '#'} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-indigo-600"><FaLinkedin size={20}/></a>
+              <a href={`mailto:${settings?.contact_email || 'saeedmuhammadwaqar@gmail.com'}`} className="text-slate-400 hover:text-indigo-600"><Mail size={20}/></a>
             </div>
           </motion.div>
         )}

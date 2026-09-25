@@ -43,11 +43,11 @@ const About = ({ settings }) => {
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900">Email:</h4>
-                <p className="text-slate-600"><a href={`mailto:${settings?.contact_email}`} className="text-indigo-600 hover:underline">{settings?.contact_email}</a></p>
+                <p className="text-slate-600"><a href={`mailto:${settings?.contact_email || 'saeedmuhammadwaqar@gmail.com'}`} className="text-indigo-600 hover:underline">{settings?.contact_email || 'saeedmuhammadwaqar@gmail.com'}</a></p>
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900">Phone:</h4>
-                <p className="text-slate-600">{settings?.contact_phone}</p>
+                <p className="text-slate-600">{settings?.contact_phone || '+923032404609'}</p>
               </div>
               <div>
                 <h4 className="font-semibold text-slate-900">Location:</h4>
